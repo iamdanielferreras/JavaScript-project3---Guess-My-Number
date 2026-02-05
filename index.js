@@ -24,6 +24,7 @@ const myBtn = document.getElementById("myBtn");
 // 2. Mga variables na dapat "global" o nasa labas para hindi mawala
 let answer;
 let runs = false;
+let attempts = 1;
 
 myBtn.onclick = function(){
     // 3. Kunin ang values tuwing click (para updated)
@@ -34,8 +35,9 @@ myBtn.onclick = function(){
     if (!runs){
         answer = Math.floor(Math.random() * (max - min + 1) + min);
         runs = true;
-        console.log("Secret Answer is: " + answer); // Secret peep!
+        console.log("Secret Answer is: " + answer ); // Secret peep!
         myH1.textContent = "Game Started! Hula na!";
+        attempts ++;
     }
 
     // 5. GUESSING: Ito ang dapat mangyari sa bawat click (o after setup)
@@ -51,7 +53,7 @@ myBtn.onclick = function(){
         myH1.style.color = "orange";
     }
     else if (guestNumber === answer) {
-        myH1.textContent = `You are Correct! Ang number ay ${answer} 🎉`;
+        myH1.textContent = `You are Correct! Ang number ay ${answer} 🎉You took ${attempts} attempts`;
         myH1.style.color = "green";
         runs = false; // Ibalik sa false para pwedeng mag-start uli ng bagong game
     }
